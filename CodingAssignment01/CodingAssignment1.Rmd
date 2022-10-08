@@ -52,6 +52,9 @@ Perform univariate analyses on the quantitative variables (center, shape, spread
 
 ```
 
+`improper labels on graphs (-0.5)`
+`only interpreted dependent variable (-15)`
+
 # Question 2
 
 Perform bivariate analyses on the quantitative variables (direction, strength and form). Describe the linear association between all variables. 
@@ -59,6 +62,8 @@ Perform bivariate analyses on the quantitative variables (direction, strength an
 ```{r q2}
 
 ```
+
+`Only interpreted dependent variable and one independent (-10)`
 
 # Question 3
 
