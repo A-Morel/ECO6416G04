@@ -59,16 +59,24 @@ $$Charges = \beta_{0}+\beta_{1}*Age+\beta_{2}*BMI+\beta_{3}*Children + \beta_{4}
 model_full <- lm(Charges ~., data = insurance)
 summary(model_full)
 ```
-
+$$Charges = -26631.15+235.89*Age+802.25*BMI+213.44*Children + 731.36 *Female + 20092.70*Smoker + 4109.84 *WinterSprings + 1962.97*WinterPark + -963.11*Oviedo$$
 Which independent variables test significant in a two-tailed test? Use $\alpha = 0.2$
-d
-The indepen
+<br>
+WinterSprings with a 0.110613 <br>
+Smoker with 6.59e-12<br>
+BMI with 2.96e-07 <br>
+Age with 0.000746 <br>
 
 
 ## Question 2
 
 Interpret the coefficients of all the independent variables that tested significant.
 # Write relationship with the dependent variable and the significant independent variables
+
+Age: For every year there is $236 added to the charges
+BMI: For every point increment in the BMI our charges go up in 803
+Smoker: If the person is smoker it adds..
+WinterSprings: if the person lives in winter springs rather than sanford the charges go up by 1962.97
 
 ## Question 3
 
@@ -84,16 +92,28 @@ The insurance agent returns with another client:
 Using the regression equation above, predict the amount of medical expenses associated with this policy. (Provide a 95% confidence interval as well)
 
 ```{r q3}
-newPrediction <- Charges[8,]
+
+newPrediction <- data.frame(Age=35, BMI=26, Children=1, Female=1, Smoker=0, WinterSprings=0, WinterPark=0, Oviedo=0)
+
 predict(model_full, newdata= newPrediction, interval = "confidence")
+
+
+
 ```
+
+Based on the prediction model the charges for an individual that is 35 years old, with a BMI of 26, non smoker, lives in sanford, and has only one child will be aprox. $3,500, with the lowest amount being -1072.45 and the max. is 7928.80. Residual Standard Error is 5651 which indicates a poor model and allows there to be a negative number.
+
 
 ## Question 4
 
 Compare the model from question 1, to a model that does not include the group of city dummies. Does including the cities reduce the SSE by a statistically significant amount? (check the partial F-test for significance of the dummies as a group). Use $\alpha = 0.05$
 
 ```{r q4}
+nodummy <- insurance [,1:6, drop=FALSE]
+nodummy <- lm (Charges~ ., data=nodummy)
+
+anova(nodummy, model_full)
 
 ```
 
-
+Comparing both models without the city variables showed no significant reduction SEE so there is no significant difference between one model that includes dummy variables and the second model that does not. 
