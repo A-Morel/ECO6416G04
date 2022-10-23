@@ -59,13 +59,14 @@ $$Charges = \beta_{0}+\beta_{1}*Age+\beta_{2}*BMI+\beta_{3}*Children + \beta_{4}
 model_full <- lm(Charges ~., data = insurance)
 summary(model_full)
 ```
-$$Charges = -26631.15+235.89*Age+802.25*BMI+213.44*Children + 731.36 *Female + 20092.70*Smoker + 4109.84 *WinterSprings + 1962.97*WinterPark + -963.11*Oviedo$$
+$$Charges = -26631.15+235.89*Age+802.25*BMI+213.44*Children + 731.36 *Female + 20092.70*Smoker + 4109.84 *WinterSprings + 1962.97*WinterPark- 963.11*Oviedo$$
 Which independent variables test significant in a two-tailed test? Use $\alpha = 0.2$
 <br>
-WinterSprings with a 0.110613 <br>
-Smoker with 6.59e-12<br>
-BMI with 2.96e-07 <br>
-Age with 0.000746 <br>
+By analyzing the P values of each independent variable and considering that our alpha = 0.2, the independent variables that test significant are the following:<br>
+WinterSprings with a P value of 0.110613 <br>
+Smoker with a P value of 6.59e-12<br>
+BMI with a P value of 2.96e-07 <br>
+Age with a P value of 0.000746 <br>
 
 
 ## Question 2
@@ -73,10 +74,10 @@ Age with 0.000746 <br>
 Interpret the coefficients of all the independent variables that tested significant.
 # Write relationship with the dependent variable and the significant independent variables
 
-Age: For every year there is $236 added to the charges
-BMI: For every point increment in the BMI our charges go up in 803
-Smoker: If the person is smoker it adds..
-WinterSprings: if the person lives in winter springs rather than sanford the charges go up by 1962.97
+Age: For every year there is $236 added to the charges<br>
+BMI: For every point increment in the BMI our charges go up in aprox. $802 <br>
+Smoker: If the person is smoker it adds $20092.70 to the total charges <br>
+WinterSprings: if the person lives in Winter Springs rather than Sanford the charges go up by $1962.97 <br>
 
 ## Question 3
 
@@ -101,7 +102,7 @@ predict(model_full, newdata= newPrediction, interval = "confidence")
 
 ```
 
-Based on the prediction model the charges for an individual that is 35 years old, with a BMI of 26, non smoker, lives in sanford, and has only one child will be aprox. $3,500, with the lowest amount being -1072.45 and the max. is 7928.80. Residual Standard Error is 5651 which indicates a poor model and allows there to be a negative number.
+Based on the prediction model the charges for an individual that is 35 years old, with a BMI of 26, non smoker, lives in Sanford, and has only one child will be aprox. $3,428, with the lowest amount being -1072.45 and the max. is $ 7928.80. Residual Standard Error is 5651 which indicates a poor model and allows there to be a negative number.
 
 
 ## Question 4
@@ -116,4 +117,4 @@ anova(nodummy, model_full)
 
 ```
 
-Comparing both models without the city variables showed no significant reduction SEE so there is no significant difference between one model that includes dummy variables and the second model that does not. 
+By comparing both models without the city variables showed no significant reduction SEE so there is no significant difference between one model that includes dummy variables and the second model that does not. With our P value being 0.2052 and our alpha = 0.05 we can make this conclusion.

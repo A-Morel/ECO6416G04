@@ -1529,9 +1529,8 @@ library(tidyverse)</code></pre>
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(gtsummary)</code></pre>
-<pre><code>## #StandWithUkraine</code></pre>
-<pre class="r"><code>library(plotly)</code></pre>
+<pre class="r"><code>library(gtsummary)
+library(plotly)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;plotly&#39;
 ## 
@@ -1669,21 +1668,25 @@ summary(model_full)</code></pre>
 ## F-statistic: 22.42 on 8 and 41 DF,  p-value: 1.123e-12</code></pre>
 <p><span class="math display">\[Charges =
 -26631.15+235.89*Age+802.25*BMI+213.44*Children + 731.36 *Female +
-20092.70*Smoker + 4109.84 *WinterSprings + 1962.97*WinterPark +
--963.11*Oviedo\]</span> Which independent variables test significant in
-a two-tailed test? Use <span class="math inline">\(\alpha = 0.2\)</span>
-<br> WinterSprings with a 0.110613 <br> Smoker with 6.59e-12<br> BMI
-with 2.96e-07 <br> Age with 0.000746 <br></p>
+20092.70*Smoker + 4109.84 *WinterSprings + 1962.97*WinterPark-
+963.11*Oviedo\]</span> Which independent variables test significant in a
+two-tailed test? Use <span class="math inline">\(\alpha = 0.2\)</span>
+<br> By analyzing the P values of each independent variable and
+considering that our alpha = 0.2, the independent variables that test
+significant are the following:<br> WinterSprings with a P value of
+0.110613 <br> Smoker with a P value of 6.59e-12<br> BMI with a P value
+of 2.96e-07 <br> Age with a P value of 0.000746 <br></p>
 </div>
 <div id="question-2" class="section level2">
 <h2>Question 2</h2>
 <p>Interpret the coefficients of all the independent variables that
 tested significant. # Write relationship with the dependent variable and
 the significant independent variables</p>
-<p>Age: For every year there is $236 added to the charges BMI: For every
-point increment in the BMI our charges go up in 803 Smoker: If the
-person is smoker it adds.. WinterSprings: if the person lives in winter
-springs rather than sanford the charges go up by 1962.97</p>
+<p>Age: For every year there is $236 added to the charges<br> BMI: For
+every point increment in the BMI our charges go up in aprox. $802 <br>
+Smoker: If the person is smoker it adds $20092.70 to the total charges
+<br> WinterSprings: if the person lives in Winter Springs rather than
+Sanford the charges go up by $1962.97 <br></p>
 </div>
 <div id="question-3" class="section level2">
 <h2>Question 3</h2>
@@ -1705,10 +1708,11 @@ predict(model_full, newdata= newPrediction, interval = &quot;confidence&quot;)</
 <pre><code>##        fit       lwr      upr
 ## 1 3428.177 -1072.453 7928.807</code></pre>
 <p>Based on the prediction model the charges for an individual that is
-35 years old, with a BMI of 26, non smoker, lives in sanford, and has
-only one child will be aprox. $3,500, with the lowest amount being
--1072.45 and the max. is 7928.80. Residual Standard Error is 5651 which
-indicates a poor model and allows there to be a negative number.</p>
+35 years old, with a BMI of 26, non smoker, lives in Sanford, and has
+only one child will be aprox. $3,428, with the lowest amount being
+-1072.45 and the max. is $ 7928.80. Residual Standard Error is 5651
+which indicates a poor model and allows there to be a negative
+number.</p>
 </div>
 <div id="question-4" class="section level2">
 <h2>Question 4</h2>
@@ -1728,10 +1732,11 @@ anova(nodummy, model_full)</code></pre>
 ##   Res.Df        RSS Df Sum of Sq      F Pr(&gt;F)
 ## 1     44 1461859212                           
 ## 2     41 1309060214  3 152798999 1.5952 0.2052</code></pre>
-<p>Comparing both models without the city variables showed no
+<p>By comparing both models without the city variables showed no
 significant reduction SEE so there is no significant difference between
 one model that includes dummy variables and the second model that does
-not.</p>
+not. With our P value being 0.2052 and our alpha = 0.05 we can make this
+conclusion.</p>
 </div>
 
 
