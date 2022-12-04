@@ -1,6 +1,6 @@
 ---
 title: "Coding Assignment 3"
-author: "Team N"
+author: "Team 4"
 date: "Due: 2021-12-09 23:59"
 output: 
   html_document:
@@ -10,6 +10,19 @@ output:
 
 ```{r setup, include=FALSE}
 #Put any packages you need here
+
+library(gt)
+library(tidyverse)
+library(gtsummary)
+library(plotly)
+library(readxl)
+library(plotly)
+library(corrplot)
+library(dplyr)
+library(car)
+library(jtools)
+sessionInfo()
+
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -30,6 +43,9 @@ Answer the following questions using complete sentences and attach all output, p
 
 ```{r dataset, include=FALSE}
 # Bring in the dataset here.
+
+insurance <- read_excel("../Data/insurance_0126_Group4.xlsx")
+
 ```
 
 
@@ -40,6 +56,13 @@ Randomly select three observations from the sample and exclude from all modeling
 
 ```{r q1}
 
+set.seed(123456)
+index <- sample(seq_len(nrow(insurance)), size = 3)
+train <- insurance[-index,]
+test <- insurance[index,]
+
+summary(train)
+
 
 ```
 
@@ -49,6 +72,8 @@ Randomly select three observations from the sample and exclude from all modeling
 Provide the correlation between all quantitative variables
 
 ```{r}
+corrplot(cor(insurance))
+
 
 ```
 
@@ -57,12 +82,20 @@ Provide the correlation between all quantitative variables
 
 Run a regression that includes all independent variables in the data table. Does the model above violate any of the Gauss-Markov assumptions? If so, what are they and what is the solution for correcting?
 
+```{r q3}
+
+model_full <- lm(Charges ~., data = insurance)
+summary(model_full)
+
+```
+$$Charges = -26631.15+235.89*Age+802.25*BMI+213.44*Children + 731.36 *Female + 20092.70*Smoker + 4109.84 *WinterSprings + 1962.97*WinterPark- 963.11*Oviedo$$
 
 ## Question 4
 
 Implement the solutions from question 3, such as data transformation, along with any other changes you wish. Use the sample data and run a new regression. How have the fit measures changed? How have the signs and significance of the coefficients changed?
 
-```{r q3}
+```{r q4}
+
 
 ```
 

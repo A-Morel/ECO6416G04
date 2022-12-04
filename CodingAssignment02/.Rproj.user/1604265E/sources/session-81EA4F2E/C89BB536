@@ -3,7 +3,7 @@
     "path": "~/GitHub/SEC0126GROUP04/CodingAssignment02/CodingAssignment2.Rmd",
     "project_path": "CodingAssignment2.Rmd",
     "type": "r_markdown",
-    "hash": "1931204573",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1665708383082.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "92,93",
-        "scrollLine": "80",
-        "last_setup_crc32": "CF1116011ca7c969"
+        "cursorPosition": "104,0",
+        "scrollLine": "91",
+        "last_setup_crc32": "81EA4F2E1ca7c969"
     },
     "folds": "",
-    "lastKnownWriteTime": 1665709916,
+    "lastKnownWriteTime": 1666569078,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1665709916518,
+    "last_content_update": 1670197943387,
     "read_only": false,
     "read_only_alternatives": []
 }
