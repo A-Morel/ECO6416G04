@@ -11,17 +11,11 @@ output:
 ```{r setup, include=FALSE}
 #Put any packages you need here
 
-library(gt)
-library(tidyverse)
-library(gtsummary)
 library(plotly)
 library(readxl)
-library(plotly)
 library(corrplot)
-library(dplyr)
 library(car)
-library(jtools)
-sessionInfo()
+
 
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -58,10 +52,26 @@ Randomly select three observations from the sample and exclude from all modeling
 
 set.seed(123456)
 index <- sample(seq_len(nrow(insurance)), size = 3)
+
+#This will be the data set for 47 observations all columns
 train <- insurance[-index,]
+
+#This will be the data set for random 3 observations all columns
 test <- insurance[index,]
 
-summary(train)
+#Below we will provide the summary statistics (min, max, std, mean, median) of the quantitative variables for the 47 observations
+
+summary(train)[,c(1:3,5)]
+
+#Below we will provide the standard deviation of our quantitative variables:
+#Charges:
+sd(insurance$Charges)
+#Age:
+sd(insurance$Age)
+#BMI:
+sd(insurance$BMI)
+#Children:
+sd(insurance$Children)
 
 
 ```
@@ -72,7 +82,7 @@ summary(train)
 Provide the correlation between all quantitative variables
 
 ```{r}
-corrplot(cor(insurance))
+corrplot(cor(train[,c(1:3,5)]), addCoef.col = "red")
 
 
 ```
@@ -82,10 +92,14 @@ corrplot(cor(insurance))
 
 Run a regression that includes all independent variables in the data table. Does the model above violate any of the Gauss-Markov assumptions? If so, what are they and what is the solution for correcting?
 
-```{r q3}
+```{r q3 p1}
 
-model_full <- lm(Charges ~., data = insurance)
-summary(model_full)
+model_1 <- lm(Charges ~., data = train )
+summary(train)
+summary(model_1)
+
+par(mfrow=c(2,2))
+plot(model_1)
 
 ```
 $$Charges = -26631.15+235.89*Age+802.25*BMI+213.44*Children + 731.36 *Female + 20092.70*Smoker + 4109.84 *WinterSprings + 1962.97*WinterPark- 963.11*Oviedo$$
